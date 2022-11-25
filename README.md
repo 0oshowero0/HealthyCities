@@ -46,7 +46,7 @@ wget -c https://repo.anaconda.com/archive/Anaconda3-2022.10-Linux-x86_64.sh
 ```
 3. Quit current terminal window and open a new one. You should able to see (base) before your command line. 
 
-4. Use the following command to install pre-configured environment through the provided .yml file (you should go to the directory of this project before performing the command)
+4. Use the following command to install pre-configured environment through the provided `.yml` file (you should go to the directory of this project before performing the command). Note: for the segmentation code in `GoogleStreetView_Perform_Segmentation` and `whatisthis`, please refer to the corresponding official repo [ViT-Adapter](https://github.com/czczup/ViT-Adapter) and [GeoSeg](https://github.com/WangLibo1995/GeoSeg) to check detailed installation guide.
 ``` bash
 conda env create -f ./anaconda_env_healthy_cities.yml
 ```
@@ -62,16 +62,18 @@ conda activate covid
 conda deactivate 
 ```
 
-(Optional) Command for creating our environment without the .yml file. Note, for the segmentation code in `GoogleStreetView_Perform_Segmentation` and `whatisthis`, please refer to the corresponding official repo to check detailed installation guide.
+(Optional) Command for creating our environment without the .yml file. Note: for the segmentation code in `GoogleStreetView_Perform_Segmentation` and `whatisthis`, please refer to the corresponding official repo [ViT-Adapter](https://github.com/czczup/ViT-Adapter) and [GeoSeg](https://github.com/WangLibo1995/GeoSeg) to check detailed installation guide.
 ``` bash
 conda create -n healthycities python==3.8
-pip install numpy ipython pandas matplotlib seaborn datetime pahtlib shapely geopandas pyrosm h5netcdf haversine requests urllib tqdm
+pip install numpy ipython pandas matplotlib seaborn datetime pathlib shapely geopandas pyrosm h5netcdf haversine requests urllib3 tqdm scipy scikit-learn
 ```
 
 
 ## Run the code
 ### Generate Lookup Tables
+Note: we have compress the original lookup tables in `city_defination_and_LUTs`. Please unzip it first.
 ``` bash
+cd ../
 python make_city_msoa_lut.py
 ```
 ### Generate Basic Statistic Subsection
@@ -134,6 +136,7 @@ For satellite image segmentaion
 
 
 ### Generate Natural Environment Subsection
+Note: we provide 12km level weather data in 12km.zip, please unzip it first. Due to the large size of the 1km level data, please download from [Met Office](https://www.metoffice.gov.uk/research/climate/maps-and-data/data/haduk-grid/haduk-grid) and organize the directory according to the 12 km example.
 ``` bash
 python weather_city.py
 python weather_msoa.py
