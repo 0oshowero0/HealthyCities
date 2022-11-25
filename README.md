@@ -6,7 +6,6 @@ This repo is the code for generating the dataset discribed in XXX.
 
 ## Folder Structure
 ```none
-airs
 ├── HealthCities
 │   ├── air_pollution (original air pollution data)
 │   ├── city_defination_and_LUTs (original defination of cities and geographical lookup tables)
