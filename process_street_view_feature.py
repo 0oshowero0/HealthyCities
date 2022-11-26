@@ -6,9 +6,9 @@ from pathlib import Path
 from shapely.geometry import Point
 from multiprocessing import Process, Pool
 
-INPUT_PATH = Path('./temp_output/GoogleStreetView_Segmentation')
+INPUT_PATH = Path('./GoogleStreetView_Segmentation')
 PROCESS_OUTPUT_PATH = Path('./temp_output/multi_process_temp/GoogleStreetView')
-OUTPUT_PATH = Path('./output/environmental_determinants/built_environment/community_pattern')
+OUTPUT_PATH = Path('./output/environmental_determinants/built_environment/street_view_feature')
 PROCESS_OUTPUT_PATH.mkdir(exist_ok=True,parents=True)
 OUTPUT_PATH.mkdir(exist_ok=True,parents=True)
 
@@ -40,7 +40,7 @@ def process_single_city(city_code,):
                 new_df['MSOAName'] = loc_msoa_info['MSOAName'].iloc[0]
                 new_df['MSOACode'] = loc_msoa_info['MSOACode'].iloc[0]
                 df = df.append(new_df)
-    df.to_csv(PROCESS_OUTPUT_PATH.joinpath('community_patterns_all_' + city_code + '.csv'), index=False)
+    df.to_csv(PROCESS_OUTPUT_PATH.joinpath('street_view_features_all_' + city_code + '.csv'), index=False)
     print("City " + city_code + ' completed.')
 
 def post_process():
@@ -48,19 +48,19 @@ def post_process():
     df = pd.DataFrame()
     for i in input_files:
         df = df.append(pd.read_csv(i))
-    #df.to_csv(OUTPUT_PATH.joinpath('community_patterns_all.csv'), index=False)
+    #df.to_csv(OUTPUT_PATH.joinpath('street_view_features_all.csv'), index=False)
 
     df_agg_msoa = df.groupby(['CityName','CityCode','MSOAName','MSOACode']).mean().reset_index()
     df_agg_msoa = df_agg_msoa.sort_values(['CityCode','MSOACode'],ascending=True)
     #df_agg_msoa = df_agg_msoa[['CityName','CityCode','MSOAName','MSOACode'] + df_agg_msoa.columns.to_list()[:-4]]
-    df_agg_msoa.to_csv(OUTPUT_PATH.joinpath('community_patterns_msoa.csv'), index=False)
+    df_agg_msoa.to_csv(OUTPUT_PATH.joinpath('street_view_features_msoa.csv'), index=False)
 
 
     df_agg_city = df.drop(['MSOACode','MSOAName'],axis=1)
     df_agg_city = df_agg_city.groupby(['CityName','CityCode']).mean().reset_index()
     df_agg_city = df_agg_city.sort_values(['CityCode'],ascending=True)
     #df_agg_city = df_agg_city[['CityName','CityCode'] + df_agg_city.columns.to_list()[:-2]]
-    df_agg_city.to_csv(OUTPUT_PATH.joinpath('community_patterns_city.csv'), index=False)
+    df_agg_city.to_csv(OUTPUT_PATH.joinpath('street_view_features_city.csv'), index=False)
 
 
 if __name__ == "__main__":

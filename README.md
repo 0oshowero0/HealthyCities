@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This repo is the code for generating the dataset discribed in XXX.
+This repo is the code for generating the dataset discribed in Healthy Cities: A Comprehensive Dataset of Environmental Determinants of Health in England Cities.
 
 ## Folder Structure
 ```none
@@ -21,9 +21,11 @@ This repo is the code for generating the dataset discribed in XXX.
 │   ├── NACIS_Code (original POI category code data)
 │   ├── osm (original OpenStreetMap data)
 │   ├── POI (original SafeGraph POI data)
-│   ├── prescribing(code and results for collection prescribing data)
+│   ├── prescribing (code and results for collection prescribing data)
 │   │   ├── get_data.py (download prescribing data)
 │   │   ├── original_data (directory for save the prescribing data files)
+│   ├── temp_output (directory to store the temp files)
+│   ├── output (directory to store the final output dataset)
 ```
 
 ## System Requirement
@@ -53,7 +55,7 @@ conda env create -f ./anaconda_env_healthy_cities.yml
 
 5. Finally, activate the installed environment. Now you can run the example code through the following chapter.
 ``` bash
-conda activate covid
+conda activate healthycities
 ```
 
 (Optional) If you need to exit the environment for other project, use the following command.
@@ -71,7 +73,7 @@ pip install numpy ipython pandas matplotlib seaborn datetime pathlib shapely geo
 
 ## Run the code
 ### Generate Lookup Tables
-Note: we have compress the original lookup tables in `city_defination_and_LUTs`. Please unzip it first.
+Note: we have compressed the original lookup tables in `city_defination_and_LUTs`. Please unzip it first.
 ``` bash
 cd ../
 python make_city_msoa_lut.py
@@ -98,7 +100,7 @@ python process_poi_post_availability_msoa.py
 
 
 ### Generate Built Environment Subsection
-Note: built environment data requires Safegraph POI data, which cannot be provided here. To reproduce the data, you need to purchase Safegraph POI data and put it in `POI` folder.
+Note: built environment data requires Safegraph POI data, Google Street View images, and ArcGIS satellite images, which cannot be provided here. To reproduce the data, you need to purchase the correspongding data.
 
 For building density and road density
 ``` bash
