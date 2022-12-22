@@ -33,8 +33,8 @@ axes[0].tick_params(axis='x', labelsize=16,rotation=90)
 axes[0].grid()
 
 
-sns.boxplot(data=satellite_view_featuress, x='CityName',y='forest',order=satellite_view_featuress_city_agg.sort_values('forest',ascending=False)['CityName'].to_list(),ax=axes[1])
-axes[1].set_ylabel('Forest',size=24)
+sns.boxplot(data=satellite_view_featuress, x='CityName',y='road',order=satellite_view_featuress_city_agg.sort_values('road',ascending=False)['CityName'].to_list(),ax=axes[1])
+axes[1].set_ylabel('Road',size=24)
 axes[1].set_xlabel('',size=20)
 axes[1].set_ylim(bottom=0)
 axes[1].tick_params(axis='y', labelsize=20)
@@ -43,7 +43,7 @@ axes[1].grid()
 
 plt.tight_layout()
 # plt.show()
-plt.savefig('water_forest_box.pdf',dpi=300)
+plt.savefig('water_road_box.pdf',dpi=300)
 
 ###########################################################################
 # geo plot
@@ -56,10 +56,11 @@ ax1.axis('off')
 # cbar.ax1.tick_params(labelsize=20)
 plt.show()
 
+
 fig, ax2 = plt.subplots(ncols=1, nrows=1, figsize=(8,6))
-forest = satellite_view_featuress[['MSOACode','forest']]
-birmingham_forest = birmingham_boundary.merge(forest,left_on='MSOACode',right_on='MSOACode', how='left')
-birmingham_forest.to_crs(4326).plot(ax=ax2,column='forest',cmap='YlGn',legend=True)
+road = satellite_view_featuress[['MSOACode','road']]
+birmingham_road = birmingham_boundary.merge(road,left_on='MSOACode',right_on='MSOACode', how='left')
+birmingham_road.to_crs(4326).plot(ax=ax2,column='road',cmap='Purples',legend=True)
 ax2.axis('off')
 # cbar = ax1.collections[0].colorbar
 # cbar.ax1.tick_params(labelsize=20)
