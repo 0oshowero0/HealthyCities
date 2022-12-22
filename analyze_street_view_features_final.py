@@ -13,7 +13,7 @@ plt.rcParams['font.family'] = ['Arial']
 plt.rcParams['xtick.labelsize']=13
 plt.rcParams['ytick.labelsize']=13
 
-street_view_featuress = pd.read_csv('./output/environmental_determinants/built_environment/street_view_features/street_view_featuress_msoa.csv')
+street_view_featuress = pd.read_csv('./output/environmental_determinants/built_environment/street_view_features/street_view_features_msoa.csv')
 street_view_featuress_city_agg = street_view_featuress.groupby(['CityName','CityCode']).median().reset_index()
 
 ###########################################################################
