@@ -6,7 +6,7 @@ This repo is the code for generating the dataset discribed in Healthy Cities: A 
 
 ## Folder Structure
 ```none
-├── HealthCities
+├── HealthyCities
 │   ├── air_pollution (original air pollution data)
 │   ├── city_defination_and_LUTs (original defination of cities and geographical lookup tables)
 │   ├── GoogleStreetView_Perform_Segmentation (segmentation code for Google Street View images)
