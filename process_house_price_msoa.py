@@ -48,4 +48,5 @@ for _, row in median_price.iterrows():
 
 house_price = pd.DataFrame({'CityName':city_name_list, 'CityCode':city_code_list, 'MSOAName':msoa_name_list, 'MSOACode':msoa_code_list, 'Time':time_list, 'Aggregation':type_list, 'Price':price_list})
 house_price = house_price.sort_values(['CityCode','MSOACode'], ascending=True)
+house_price['Price'] = house_price['Price'].map(lambda x:int(''.join(str(x).split(','))))
 house_price.to_csv(OUTPUT_PATH.joinpath('house_price_msoa.csv'),index=False)
