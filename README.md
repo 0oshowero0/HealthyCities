@@ -168,5 +168,11 @@ python process_prescribing_other_diseases_city.py
 python process_prescribing_other_diseases_msoa.py
 ```
 
+
+### Generate Comprehensive Dataset
+``` bash
+python process_merge_all_data.py
+```
+
 ### Reproducing Figures
 Refer to the .py codes begin with `analyses_`
