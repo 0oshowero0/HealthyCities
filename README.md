@@ -36,9 +36,9 @@ CPU: AMD Ryzen Threadripper 2990WX 32-Core Processor
 Memory: 128G DDR4 Memory
 
 ### Installation Guide
-Typically, a morden computer with fast internet can complete the installation within 10 mins.
+Typically, a modern computer with fast internet can complete the installation within 10 mins.
 
-1. Download Anaconda according to [Official Website](https://www.anaconda.com/products/distribution), which can be done by the fillowing command (newer version of anaconda should also works)
+1. Download Anaconda according to [Official Website](https://www.anaconda.com/products/distribution), which can be done by the following command (newer version of anaconda should also work)
 ``` bash
 wget -c https://repo.anaconda.com/archive/Anaconda3-2022.10-Linux-x86_64.sh
 ```
@@ -46,7 +46,7 @@ wget -c https://repo.anaconda.com/archive/Anaconda3-2022.10-Linux-x86_64.sh
 ``` bash
 ./Anaconda3-2022.10-Linux-x86_64.sh
 ```
-3. Quit current terminal window and open a new one. You should able to see (base) before your command line. 
+3. Quit current terminal window and open a new one. You should be able to see (base) before your command line. 
 
 4. Use the following command to install pre-configured environment through the provided `.yml` file (you should go to the directory of this project before performing the command). Note: for the segmentation code in `GoogleStreetView_Perform_Segmentation` and `whatisthis`, please refer to the corresponding official repo [ViT-Adapter](https://github.com/czczup/ViT-Adapter) and [GeoSeg](https://github.com/WangLibo1995/GeoSeg) to check detailed installation guide.
 ``` bash
